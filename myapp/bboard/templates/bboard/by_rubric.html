@@ -1,27 +1,15 @@
-<!DOCTYPE html>
-<html>
+{% extends 'layout/basic.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>All goods in {{ current_theme.name }} theme</title>
-</head>
+{% block title %}All goods in {{ current_theme.name }} theme{% endblock %}
 
-<body>
-    <h1>Goods</h1>
-    <h2>Theme: {{ current_theme.name }}</h2>
-    <div>
-        <a href="{% url 'index' %}">Main page</a><br>
-        {% for theme in themes %}
-            <a href="{% url 'by_theme' theme.pk %}">{{ theme.name }}</a>
-        {% endfor %}
-    </div>
-        {% for bb in bbs %}
-            <div>
-                <h2>{{ bb.title }}</h2>
-                <p>{{ bb.content }}</p>
-                <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
-            </div>
-        {% endfor %}
-</body>
 
-</html>
+{% block content %}
+<h2>Theme: {{ current_theme.name }}</h2>
+    {% for bb in bbs %}
+        <div>
+            <h2>{{ bb.title }}</h2>
+            <p>{{ bb.content }}</p>
+            <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

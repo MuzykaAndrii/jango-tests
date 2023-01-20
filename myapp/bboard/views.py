@@ -19,7 +19,8 @@ class BbCreateView(CreateView):
 
 def index(request):
     all_goods = Bb.objects.all()
-    return render(request, 'bboard/index.html', {'bbs': all_goods})
+    themes = Theme.objects.all()
+    return render(request, 'bboard/index.html', {'bbs': all_goods, 'themes': themes})
 
 
 def by_theme(request, theme_id):
