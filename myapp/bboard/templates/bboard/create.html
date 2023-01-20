@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Create new good</title>
+</head>
+
+<body>
+    <h1>Creating of new good</h1>
+    <div>
+        <a href="{% url 'index' %}">Main page</a>
+        {% for theme in themes %}
+            <a href="{% url 'by_theme' theme.pk %}">{{ theme.name }}</a>
+        {% endfor %}
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Add new good">
+    </form>
+</body>
+
+</html>
